@@ -1,5 +1,5 @@
 //your JS code here. If required.
-const output = document.getElementById("output");
+/*const output = document.getElementById("output");
 const btn = document.getElementById("download-images-button");
 
 const images = [
