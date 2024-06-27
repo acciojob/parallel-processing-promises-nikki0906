@@ -1,15 +1,62 @@
 <!DOCTYPE html>
 
-<html>
-  <head>
-    <link rel="stylesheet" href="styles.css" />
-  </head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Downloader</title>
+  <style>
+    #output img {
+      margin: 10px;
+      max-width: 200px;
+      max-height: 200px;
+    }
+  </style>
+</head>
+<body>
+  <button id="download-images-button">Download Images</button>
+  <div id="output"></div>
 
-  <body>
-    <!-- the entire body must be written by student -->
-    <div id="output"></div>
-    <script type="text/javascript" src="./script.js"></script>
+  <script>
+    const output = document.getElementById("output");
+    const btn = document.getElementById("download-images-button");
 
-	  
-  </body>
+    const images = [
+      { url: "https://picsum.photos/id/237/200/300" },
+      { url: "https://picsum.photos/id/238/200/300" },
+      { url: "https://picsum.photos/id/239/200/300" },
+    ];
+
+    btn.addEventListener('click', () => {
+      downloadAndDisplayImages(images);
+    });
+
+    function downloadImage(image) {
+      return new Promise((resolve, reject) => {
+        const img = new Image();
+        img.src = image.url;
+        img.onload = () => resolve(img);
+        img.onerror = () => reject(new Error(`Failed to load image's URL: ${image.url}`));
+      });
+    }
+
+    function downloadAndDisplayImages(images) {
+      output.innerHTML = '';
+
+      const downloadPromises = images.map(image => downloadImage(image));
+
+      Promise.all(downloadPromises)
+        .then(images => {
+          images.forEach(img => {
+            output.appendChild(img);
+          });
+        })
+        .catch(error => {
+          console.error(error);
+          alert(error.message);
+        });
+    }
+  </script>
+</body>
 </html>

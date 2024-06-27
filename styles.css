@@ -1,6 +1,18 @@
 /*  your css code here. If applicable */
-#output img {
-      margin: 10px;
-      max-width: 200px;
-      max-height: 200px;
-    }
+
+
+/* <!DOCTYPE html>
+
+<html>
+  <head>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <!-- the entire body must be written by student -->
+    <div id="output"></div>
+    <script type="text/javascript" src="./script.js"></script>
+
+	  
+  </body>
+</html>
