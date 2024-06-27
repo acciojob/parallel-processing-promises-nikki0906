@@ -10,7 +10,7 @@ const images = [
 ];
 
 
-btn.addEventListener('click', () => {
+    btn.addEventListener('click', () => {
       downloadAndDisplayImages(images);
     });
 
